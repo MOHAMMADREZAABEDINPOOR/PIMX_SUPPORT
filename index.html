@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOHAMMADREZA — Support the Creator</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #05060c;
+      --cyan: #00f0ff;
+      --purple: #a855f7;
+      --gold: #f5c542;
+      --pink: #ff4d9d;
+      --text: #e8e8f0;
+      --text-dim: #8a8a9e;
+      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --mono: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ══ Background ══ */
+    #constellation {
+      position: fixed; inset: 0; z-index: 0;
+      display: block; pointer-events: none;
+    }
+
+    .bg-scene {
+      position: fixed; inset: 0; z-index: 0;
+      pointer-events: none; overflow: hidden;
+    }
+
+    /* Deep base wash so the page never looks flat black */
+    .bg-scene::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,240,255,.10), transparent 60%),
+        radial-gradient(ellipse 60% 50% at 12% 100%, rgba(168,85,247,.10), transparent 60%),
+        radial-gradient(ellipse 55% 45% at 92% 78%, rgba(255,77,157,.07), transparent 60%);
+    }
+
+    /* Slow-rotating conic aurora — the main "creative" layer */
+    .aurora {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 160vmax; height: 160vmax;
+      margin: -80vmax 0 0 -80vmax;
+      background: conic-gradient(from 0deg,
+        rgba(0,240,255,.16) 0deg,
+        transparent 55deg,
+        rgba(168,85,247,.18) 110deg,
+        transparent 165deg,
+        rgba(245,197,66,.10) 215deg,
+        transparent 265deg,
+        rgba(255,77,157,.16) 310deg,
+        transparent 360deg);
+      filter: blur(70px);
+      mix-blend-mode: screen;
+      animation: auroraSpin 42s linear infinite;
+    }
+    .aurora.b {
+      animation: auroraSpin 66s linear infinite reverse;
+      opacity: .6;
+      filter: blur(100px);
+    }
+    @keyframes auroraSpin { to { transform: rotate(360deg); } }
+
+    /* Flowing ribbons */
+    .ribbon {
+      position: absolute; left: -25%; width: 150%; height: 46vmin;
+      border-radius: 50%;
+      filter: blur(60px); opacity: .3;
+      mix-blend-mode: screen;
+      animation: ribbonWave 26s ease-in-out infinite alternate;
+    }
+    .ribbon.r1 { top: 6%;  background: linear-gradient(90deg, transparent, rgba(0,240,255,.5), transparent); }
+    .ribbon.r2 { top: 44%; background: linear-gradient(90deg, transparent, rgba(168,85,247,.5), transparent);
+                 animation-duration: 34s; animation-delay: -8s; }
+    .ribbon.r3 { top: 74%; background: linear-gradient(90deg, transparent, rgba(255,77,157,.4), transparent);
+                 animation-duration: 30s; animation-delay: -16s; }
+    @keyframes ribbonWave {
+      0%   { transform: translate3d(-6%, 0, 0) rotate(-4deg) scaleY(.85); }
+      50%  { transform: translate3d(4%, -3vmin, 0) rotate(3deg) scaleY(1.15); }
+      100% { transform: translate3d(8%, 2vmin, 0) rotate(-2deg) scaleY(.95); }
+    }
+
+    .bg-glow {
+      position: absolute; border-radius: 50%;
+      filter: blur(110px); opacity: 0.3;
+      animation: glowDrift 18s ease-in-out infinite alternate;
+      mix-blend-mode: screen;
+    }
+    .bg-glow.g1 { width: 560px; height: 560px; top: -10%; left: -6%;
+      background: radial-gradient(circle, rgba(0,240,255,.4), transparent 70%); }
+    .bg-glow.g2 { width: 460px; height: 460px; bottom: 4%; right: -8%;
+      background: radial-gradient(circle, rgba(168,85,247,.4), transparent 70%);
+      animation-delay: -6s; }
+    .bg-glow.g3 { width: 380px; height: 380px; top: 40%; left: 38%;
+      background: radial-gradient(circle, rgba(255,77,157,.22), transparent 70%);
+      animation-delay: -11s; }
+
+    @keyframes glowDrift {
+      0%   { transform: translate(0,0) scale(1); }
+      100% { transform: translate(40px,-30px) scale(1.12); }
+    }
+
+    /* Perspective floor grid */
+    .bg-grid {
+      position: absolute; inset: -40%;
+      background-image:
+        linear-gradient(rgba(0,240,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,240,255,.045) 1px, transparent 1px);
+      background-size: 52px 52px;
+      transform: rotateX(62deg) translateZ(-180px) scale(1.9);
+      transform-origin: center;
+      mask-image: radial-gradient(ellipse 55% 48% at 50% 48%, #000, transparent);
+      -webkit-mask-image: radial-gradient(ellipse 55% 48% at 50% 48%, #000, transparent);
+      opacity: .6;
+      animation: gridPan 20s linear infinite;
+    }
+    @keyframes gridPan {
+      from { background-position: 0 0; }
+      to   { background-position: 0 52px; }
+    }
+
+    /* Fine noise so gradients don't band */
+    .bg-noise {
+      position: absolute; inset: 0; opacity: .035;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation: noiseShift 1.2s steps(3) infinite;
+    }
+    @keyframes noiseShift {
+      0%   { transform: translate(0,0); }
+      33%  { transform: translate(-2%, 1%); }
+      66%  { transform: translate(1%, -2%); }
+      100% { transform: translate(0,0); }
+    }
+
+    /* Vignette to focus the center */
+    .bg-vignette {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 75% 65% at 50% 45%, transparent 45%, rgba(3,4,10,.72) 100%);
+    }
+
+    .scanline {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(0,240,255,.5), transparent);
+      height: 2px; opacity: .12;
+      animation: scan 7s linear infinite;
+    }
+    @keyframes scan {
+      0%   { transform: translateY(-10vh); }
+      100% { transform: translateY(110vh); }
+    }
+
+    /* ══ Layout ══ */
+    .scene {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 3rem 1.25rem 2.5rem;
+      perspective: 1400px;
+    }
+
+    .header {
+      text-align: center; margin-bottom: 2.75rem;
+      max-width: 820px; transform-style: preserve-3d;
+    }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .45rem 1.1rem; font-size: .7rem; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--cyan);
+      background: rgba(0,240,255,.06);
+      border: 1px solid rgba(0,240,255,.24);
+      border-radius: 999px;
+      box-shadow: 0 0 18px rgba(0,240,255,.14);
+      margin-bottom: 1.4rem;
+      animation: badgeFloat 4s ease-in-out infinite, fadeUp .7s ease both;
+      backdrop-filter: blur(8px);
+      position: relative; overflow: hidden;
+    }
+    .badge::after {
+      content: ''; position: absolute; top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(105deg, transparent, rgba(0,240,255,.35), transparent);
+      animation: badgeShine 3.5s ease-in-out infinite;
+    }
+    @keyframes badgeShine { 0%,60% { left: -100%; } 100% { left: 160%; } }
+    .badge .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--cyan); box-shadow: 0 0 8px var(--cyan);
+      animation: dotPulse 1.8s ease-in-out infinite;
+    }
+    @keyframes dotPulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%     { opacity: .4; transform: scale(.7); }
+    }
+
+    @keyframes badgeFloat {
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(-5px); }
+    }
+
+    .title {
+      font-size: clamp(2.3rem, 8vw, 4.8rem);
+      font-weight: 800; letter-spacing: .09em; line-height: 1.1;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 0 28px rgba(0,240,255,.3));
+      position: relative;
+    }
+    /* Each letter carries its OWN gradient fill. A transform on a
+       background-clip:text child cancels the parent's clipped fill,
+       so the gradient must live on the span itself. */
+    .title span {
+      display: inline-block;
+      background: linear-gradient(110deg, var(--cyan), var(--purple) 28%, var(--gold) 50%, var(--pink) 68%, var(--cyan));
+      background-size: 300% 100%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+    }
+
+    .title::after {
+      content: 'MOHAMMADREZA'; position: absolute; inset: 0;
+      background: linear-gradient(110deg, var(--cyan), var(--purple) 28%, var(--gold) 50%, var(--pink) 68%, var(--cyan));
+      background-size: 300% 100%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradFlow 7s ease infinite;
+      filter: blur(20px); opacity: .45; z-index: -1; pointer-events: none;
+    }
+
+    @keyframes gradFlow {
+      0%,100% { background-position: 0% 50%; }
+      50%     { background-position: 100% 50%; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Transform-only: opacity/filter on a child would break the
+       parent's background-clip:text gradient fill. */
+    @keyframes letterIn {
+      from { transform: translateY(30px) rotateX(-75deg) scale(.8); }
+      60%  { transform: translateY(-4px) rotateX(8deg) scale(1.04); }
+      to   { transform: translateY(0) rotateX(0) scale(1); }
+    }
+
+    @keyframes letterFloat {
+      0%,100% { transform: translateY(0); }
+      50%     { transform: translateY(-4px); }
+    }
+
+    /* Cursor spotlight inside cards */
+    .card .spot {
+      position: absolute; inset: 0; z-index: 1;
+      pointer-events: none; border-radius: inherit;
+      opacity: 0; transition: opacity .35s;
+      background: radial-gradient(circle 180px at var(--mx,50%) var(--my,50%),
+                  color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%);
+    }
+    .card:hover .spot { opacity: 1; }
+
+    /* Button ripple — tinted by the coin's accent */
+    .ripple {
+      position: absolute; border-radius: 50%;
+      background: radial-gradient(circle,
+        color-mix(in srgb, var(--accent) 85%, #fff) 0%,
+        color-mix(in srgb, var(--accent) 45%, transparent) 55%,
+        transparent 72%);
+      transform: scale(0); opacity: .8;
+      animation: rippleOut .6s ease-out forwards;
+      pointer-events: none;
+    }
+    @keyframes rippleOut {
+      to { transform: scale(1); opacity: 0; }
+    }
+
+    /* Full-screen flash in the coin's color on copy */
+    .flash {
+      position: fixed; inset: 0; z-index: 54;
+      pointer-events: none; opacity: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 45%,
+        color-mix(in srgb, var(--f-accent, var(--cyan)) 30%, transparent), transparent 70%);
+    }
+    .flash.go { animation: flashPulse .75s ease-out forwards; }
+    @keyframes flashPulse {
+      0%   { opacity: 0; transform: scale(1.06); }
+      18%  { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(1); }
+    }
+
+    /* Toast — tinted with the copied coin's accent */
+    .toast {
+      position: fixed; left: 50%; bottom: 2rem;
+      transform: translate(-50%, 130%);
+      z-index: 70; max-width: 90vw;
+      display: flex; align-items: center; gap: .5rem;
+      padding: .7rem 1.15rem; border-radius: 12px;
+      font-size: .8rem; font-weight: 600; letter-spacing: .03em;
+      color: #fff;
+      background: linear-gradient(120deg,
+        color-mix(in srgb, var(--t-accent, var(--cyan)) 26%, rgba(6,8,16,.92)),
+        rgba(6,8,16,.92));
+      border: 1px solid color-mix(in srgb, var(--t-accent, var(--cyan)) 55%, transparent);
+      box-shadow: 0 12px 40px rgba(0,0,0,.6),
+                  0 0 30px color-mix(in srgb, var(--t-accent, var(--cyan)) 30%, transparent);
+      backdrop-filter: blur(14px);
+      opacity: 0;
+      transition: transform .45s cubic-bezier(.16,1,.3,1), opacity .35s;
+    }
+    .toast.show { transform: translate(-50%, 0); opacity: 1; }
+    .toast.err {
+      color: #ffd9d9;
+      background: rgba(28,8,8,.92);
+      border-color: rgba(248,113,113,.45);
+      box-shadow: 0 12px 40px rgba(0,0,0,.6), 0 0 26px rgba(248,113,113,.22);
+    }
+
+    /* ══ Cards grid ══ */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      width: 100%;
+      max-width: 1020px;
+    }
+
+    .card-wrap {
+      perspective: 900px;
+      animation: cardIn .8s cubic-bezier(.16,1,.3,1) both;
+    }
+    .card-wrap:nth-child(1) { animation-delay: .12s; }
+    .card-wrap:nth-child(2) { animation-delay: .2s; }
+    .card-wrap:nth-child(3) { animation-delay: .28s; }
+    .card-wrap:nth-child(4) { animation-delay: .36s; }
+    .card-wrap:nth-child(5) { animation-delay: .44s; }
+    .card-wrap:nth-child(6) { animation-delay: .52s; }
+    .card-wrap:nth-child(7) { animation-delay: .6s; }
+    .card-wrap:nth-child(8) { animation-delay: .68s; }
+    .card-wrap:nth-child(9) { animation-delay: .76s; }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(50px) scale(.9) rotateX(-8deg); }
+      to   { opacity: 1; transform: translateY(0) scale(1) rotateX(0); }
+    }
+
+    /* ══ Card ══ */
+    .card {
+      position: relative;
+      height: 288px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 1.15rem 1.15rem 1rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: .65rem;
+      background: linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.01) 50%, rgba(0,0,0,.32));
+      backdrop-filter: blur(18px) saturate(1.3);
+      -webkit-backdrop-filter: blur(18px) saturate(1.3);
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: border-color .4s, box-shadow .4s;
+      cursor: default;
+    }
+
+    .card[data-coin="btc"]    { --accent: #f7931a; --glow: rgba(247,147,26,.45); }
+    .card[data-coin="eth"]    { --accent: #627eea; --glow: rgba(98,126,234,.45); }
+    .card[data-coin="usdt-e"] { --accent: #26a17b; --glow: rgba(38,161,123,.45); }
+    .card[data-coin="usdt-t"] { --accent: #26a17b; --glow: rgba(38,161,123,.4); }
+    .card[data-coin="trx"]    { --accent: #ff0013; --glow: rgba(255,0,19,.4); }
+    .card[data-coin="sol"]    { --accent: #9945ff; --glow: rgba(153,69,255,.4); }
+    .card[data-coin="bnb"]    { --accent: #f3ba2f; --glow: rgba(243,186,47,.45); }
+    .card[data-coin="doge"]   { --accent: #c2a633; --glow: rgba(194,166,51,.45); }
+    .card[data-coin="gram"]   { --accent: #0098ea; --glow: rgba(0,152,234,.45); }
+
+    /* Animated conic border on hover */
+    .card::before {
+      content: ''; position: absolute; inset: -1px; border-radius: inherit;
+      padding: 1px; z-index: 5; pointer-events: none;
+      background: conic-gradient(from var(--angle,0deg), transparent 0%, var(--accent) 10%, transparent 25%, transparent 75%, var(--accent) 90%, transparent 100%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      opacity: 0; transition: opacity .4s;
+    }
+    .card:hover::before { opacity: 1; animation: spinBorder 3s linear infinite; }
+    @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    @keyframes spinBorder { to { --angle: 360deg; } }
+
+    .theme {
+      position: absolute; inset: 0; border-radius: inherit;
+      pointer-events: none; z-index: 0; overflow: hidden;
+    }
+
+    .theme-bg {
+      position: absolute; inset: 0;
+      opacity: 0; transform: scale(1.06);
+      transition: opacity .45s ease, transform .55s cubic-bezier(.16,1,.3,1);
+    }
+
+    .theme-glow {
+      position: absolute; width: 150px; height: 150px;
+      border-radius: 50%; filter: blur(38px);
+      opacity: 0; transform: scale(.5);
+      transition: opacity .4s, transform .5s;
+    }
+    .theme-glow.a { top: -30%; right: -15%; background: var(--glow); }
+    .theme-glow.b { bottom: -25%; left: -10%; background: var(--glow); width: 110px; height: 110px; transition-delay: .06s; }
+
+    .theme-icons {
+      position: absolute; inset: 0;
+      opacity: 0; transition: opacity .5s ease .05s;
+      background-repeat: repeat;
+      background-size: 52px 52px;
+      background-position: center;
+      mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, #000 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, #000 20%, transparent 75%);
+    }
+
+    .card[data-coin="btc"] .theme-bg { background: radial-gradient(ellipse 100% 80% at 30% 0%, rgba(247,147,26,.5), transparent 55%), radial-gradient(ellipse 70% 60% at 100% 100%, rgba(180,90,0,.35), transparent 50%), linear-gradient(150deg, #1c0f00, #2a1600 45%, #0c0700); }
+    .card[data-coin="eth"] .theme-bg { background: radial-gradient(ellipse 90% 70% at 80% 0%, rgba(98,126,234,.45), transparent 55%), radial-gradient(ellipse 60% 50% at 0% 100%, rgba(140,100,255,.25), transparent 50%), linear-gradient(150deg, #080a16, #12183a 45%, #05060c); }
+    .card[data-coin="usdt-e"] .theme-bg { background: radial-gradient(ellipse 90% 70% at 20% 10%, rgba(38,161,123,.45), transparent 55%), linear-gradient(150deg, #02140f, #0a2a1e 45%, #010c08); }
+    .card[data-coin="usdt-t"] .theme-bg { background: radial-gradient(ellipse 70% 55% at 90% 5%, rgba(255,30,30,.2), transparent 50%), radial-gradient(ellipse 90% 70% at 15% 90%, rgba(38,161,123,.4), transparent 55%), linear-gradient(150deg, #02140f, #0a1e16 40%, #140606); }
+    .card[data-coin="trx"] .theme-bg { background: radial-gradient(ellipse 100% 70% at 50% 0%, rgba(255,20,20,.42), transparent 55%), linear-gradient(150deg, #160000, #280505 45%, #080000); }
+    .card[data-coin="sol"] .theme-bg { background: radial-gradient(ellipse 70% 55% at 10% 20%, rgba(153,69,255,.42), transparent 55%), radial-gradient(ellipse 60% 50% at 95% 90%, rgba(20,241,149,.28), transparent 50%), linear-gradient(135deg, #0c0618, #0a1816 50%, #060610); }
+    .card[data-coin="bnb"] .theme-bg { background: radial-gradient(ellipse 100% 80% at 40% 0%, rgba(243,186,47,.45), transparent 55%), linear-gradient(150deg, #1a1400, #2a2100 45%, #0c0900); }
+    .card[data-coin="doge"] .theme-bg { background: radial-gradient(ellipse 90% 70% at 70% 0%, rgba(194,166,51,.42), transparent 55%), linear-gradient(150deg, #14110a, #241f10 45%, #0a0805); }
+    .card[data-coin="gram"] .theme-bg { background: radial-gradient(ellipse 90% 70% at 60% 0%, rgba(0,152,234,.45), transparent 55%), linear-gradient(150deg, #001420, #002a3a 45%, #000a10); }
+
+    .card[data-coin="btc"] .theme-icons   { background-image: url('https://assets.coingecko.com/coins/images/1/small/bitcoin.png'); background-size: 48px; }
+    .card[data-coin="eth"] .theme-icons   { background-image: url('https://assets.coingecko.com/coins/images/279/small/ethereum.png'); background-size: 44px; }
+    .card[data-coin="usdt-e"] .theme-icons,
+    .card[data-coin="usdt-t"] .theme-icons { background-image: url('https://assets.coingecko.com/coins/images/325/small/Tether.png'); background-size: 44px; }
+    .card[data-coin="trx"] .theme-icons   { background-image: url('https://assets.coingecko.com/coins/images/1094/small/tron-logo.png'); background-size: 44px; }
+    .card[data-coin="sol"] .theme-icons   { background-image: url('https://assets.coingecko.com/coins/images/4128/small/solana.png'); background-size: 44px; }
+    .card[data-coin="bnb"] .theme-icons   { background-image: url('https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png'); background-size: 44px; }
+    .card[data-coin="doge"] .theme-icons  { background-image: url('https://assets.coingecko.com/coins/images/5/small/dogecoin.png'); background-size: 46px; }
+    .card[data-coin="gram"] .theme-icons  { background-image: url('https://assets.coingecko.com/coins/images/17980/small/ton_symbol.png'); background-size: 42px; }
+
+    .card:hover .theme-bg { opacity: 1; transform: scale(1); }
+    .card:hover .theme-glow { opacity: 1; transform: scale(1); }
+    .card:hover .theme-icons { opacity: .12; }
+
+    .card:hover {
+      border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+      box-shadow: 0 22px 60px rgba(0,0,0,.55), 0 0 45px color-mix(in srgb, var(--accent) 24%, transparent), inset 0 1px 0 rgba(255,255,255,.08);
+    }
+
+    .shine {
+      position: absolute; top: 0; left: -130%; width: 50%; height: 100%;
+      background: linear-gradient(105deg, transparent, rgba(255,255,255,.05) 40%, rgba(255,255,255,.16) 50%, rgba(255,255,255,.05) 60%, transparent);
+      transform: skewX(-18deg); z-index: 3; pointer-events: none;
+    }
+    .card:hover .shine { animation: shine .85s ease forwards; }
+    @keyframes shine { from { left: -130%; } to { left: 160%; } }
+
+    .card-body {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column;
+      height: 100%; gap: .55rem;
+      transform-style: preserve-3d;
+    }
+
+    .logo-wrap {
+      width: 54px; height: 54px; flex-shrink: 0;
+      position: relative;
+      transform: translateZ(30px);
+      transition: transform .4s cubic-bezier(.16,1,.3,1);
+    }
+    .logo-ring {
+      position: absolute; inset: -4px; border-radius: 50%;
+      border: 1.5px solid color-mix(in srgb, var(--accent) 35%, transparent);
+      box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 25%, transparent);
+      transition: border-color .35s, box-shadow .35s, transform .4s;
+    }
+    .logo-img {
+      width: 100%; height: 100%; border-radius: 50%;
+      object-fit: cover; display: block; background: #111;
+      box-shadow: 0 4px 16px color-mix(in srgb, var(--accent) 30%, transparent), 0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent);
+      transition: box-shadow .35s, transform .4s, filter .35s;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.4));
+    }
+    .card:hover .logo-wrap { transform: translateZ(45px) scale(1.12) rotateY(-12deg); }
+    .card:hover .logo-ring {
+      border-color: color-mix(in srgb, var(--accent) 80%, transparent);
+      box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 50%, transparent);
+      transform: scale(1.08);
+      animation: ringPulse 1.6s ease-in-out infinite;
+    }
+    .card:hover .logo-img {
+      box-shadow: 0 8px 28px color-mix(in srgb, var(--accent) 50%, transparent), 0 0 0 2px color-mix(in srgb, var(--accent) 50%, transparent);
+      filter: drop-shadow(0 0 12px color-mix(in srgb, var(--accent) 60%, transparent));
+      transform: scale(1.05);
+    }
+    @keyframes ringPulse {
+      0%,100% { box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 40%, transparent); }
+      50%     { box-shadow: 0 0 32px color-mix(in srgb, var(--accent) 70%, transparent); }
+    }
+
+    .meta { transform: translateZ(18px); flex-shrink: 0; }
+    .coin-name {
+      font-size: 1.15rem; font-weight: 700; letter-spacing: .04em;
+      color: #fff; line-height: 1.2; transition: text-shadow .35s;
+    }
+    .card:hover .coin-name { text-shadow: 0 0 18px color-mix(in srgb, var(--accent) 55%, transparent); }
+    .coin-net {
+      font-size: .72rem; color: var(--text-dim);
+      display: flex; align-items: center; gap: .35rem;
+      margin-top: .15rem; transition: color .35s;
+    }
+    .coin-net::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 6px var(--accent);
+      flex-shrink: 0; transition: transform .3s, box-shadow .3s;
+    }
+    .card:hover .coin-net { color: color-mix(in srgb, var(--accent) 65%, #999); }
+    .card:hover .coin-net::before { transform: scale(1.35); box-shadow: 0 0 10px var(--accent); }
+
+    .addr {
+      background: rgba(0,0,0,.4);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 10px; padding: .55rem .7rem;
+      flex: 1; min-height: 0;
+      display: flex; flex-direction: column;
+      transform: translateZ(14px);
+      transition: border-color .35s, background .35s, box-shadow .35s;
+    }
+    .card:hover .addr {
+      border-color: color-mix(in srgb, var(--accent) 22%, transparent);
+      background: rgba(0,0,0,.5);
+      box-shadow: inset 0 0 16px color-mix(in srgb, var(--accent) 6%, transparent);
+    }
+    .addr-label {
+      font-size: .58rem; text-transform: uppercase;
+      letter-spacing: .12em; color: var(--text-dim); margin-bottom: .25rem;
+    }
+    .addr-text {
+      font-family: var(--mono); font-size: .65rem; line-height: 1.45;
+      color: #c4c4d4; word-break: break-all; user-select: all; overflow: hidden;
+    }
+
+    .copy-btn {
+      position: relative;
+      display: flex; align-items: center; justify-content: center; gap: .4rem;
+      width: 100%; padding: .65rem 1rem; border-radius: 10px;
+      border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      color: #fff; font-family: var(--font);
+      font-size: .78rem; font-weight: 600; letter-spacing: .05em;
+      cursor: pointer; outline: none;
+      transform: translateZ(22px); flex-shrink: 0; margin-top: auto;
+      transition: background .25s, border-color .25s, box-shadow .25s, transform .15s;
+      -webkit-tap-highlight-color: transparent; overflow: hidden;
+    }
+    .copy-btn:hover {
+      background: color-mix(in srgb, var(--accent) 28%, transparent);
+      border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+      box-shadow: 0 0 22px color-mix(in srgb, var(--accent) 28%, transparent);
+    }
+    .copy-btn:active { transform: translateZ(22px) scale(.96); }
+    .copy-btn .ok { position: absolute; opacity: 0; transform: translateY(6px); pointer-events: none; transition: .2s; }
+    .copy-btn .def { transition: .2s; }
+    .copy-btn.copied {
+      background: color-mix(in srgb, var(--accent) 30%, transparent);
+      border-color: color-mix(in srgb, var(--accent) 70%, transparent);
+      box-shadow: 0 0 26px color-mix(in srgb, var(--accent) 45%, transparent);
+      color: #fff;
+      animation: pop .4s cubic-bezier(.34,1.56,.64,1);
+    }
+    .copy-btn.copied .def { opacity: 0; transform: translateY(-6px); }
+    .copy-btn.copied .ok { opacity: 1; transform: translateY(0); }
+    @keyframes pop {
+      0% { transform: translateZ(22px) scale(1); }
+      40% { transform: translateZ(22px) scale(1.05); }
+      100% { transform: translateZ(22px) scale(1); }
+    }
+
+    .card-top {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: .5rem;
+      transform: translateZ(24px); flex-shrink: 0;
+    }
+
+    .qr-btn {
+      width: 30px; height: 30px; flex-shrink: 0;
+      display: grid; place-items: center;
+      border-radius: 9px; cursor: pointer;
+      color: var(--text-dim);
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.09);
+      opacity: 0; transform: translateY(-4px);
+      transition: opacity .3s, transform .3s, color .25s, background .25s, border-color .25s, box-shadow .25s;
+    }
+    .card:hover .qr-btn, .card:focus-within .qr-btn { opacity: 1; transform: translateY(0); }
+    .qr-btn:hover {
+      color: #fff;
+      background: color-mix(in srgb, var(--accent) 26%, transparent);
+      border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+      box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 30%, transparent);
+    }
+    .qr-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; opacity: 1; }
+
+    .logo-fallback {
+      width: 100%; height: 100%; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: .8rem; letter-spacing: .02em; color: #fff;
+      background: linear-gradient(140deg,
+        color-mix(in srgb, var(--accent) 75%, #000),
+        color-mix(in srgb, var(--accent) 25%, #000));
+      box-shadow: 0 4px 16px color-mix(in srgb, var(--accent) 30%, transparent);
+    }
+
+    /* ══ QR modal ══ */
+    .modal {
+      position: fixed; inset: 0; z-index: 60;
+      display: grid; place-items: center; padding: 1.25rem;
+      background: rgba(2,4,10,.78);
+      backdrop-filter: blur(10px);
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s;
+    }
+    .modal.show { opacity: 1; pointer-events: auto; }
+
+    .modal-card {
+      position: relative; width: 100%; max-width: 320px;
+      padding: 1.5rem 1.35rem 1.35rem;
+      border-radius: 20px; text-align: center;
+      background: linear-gradient(160deg, rgba(255,255,255,.07), rgba(0,0,0,.5));
+      border: 1px solid color-mix(in srgb, var(--m-accent, var(--cyan)) 40%, transparent);
+      box-shadow: 0 30px 80px rgba(0,0,0,.7),
+                  0 0 50px color-mix(in srgb, var(--m-accent, var(--cyan)) 22%, transparent);
+      transform: scale(.88) translateY(14px);
+      transition: transform .38s cubic-bezier(.16,1,.3,1);
+    }
+    .modal.show .modal-card { transform: scale(1) translateY(0); }
+
+    .modal-close {
+      position: absolute; top: .6rem; right: .6rem;
+      width: 30px; height: 30px; border-radius: 8px;
+      display: grid; place-items: center;
+      font-size: 1.1rem; line-height: 1; cursor: pointer;
+      color: var(--text-dim); background: transparent;
+      border: 1px solid rgba(255,255,255,.1);
+      transition: color .2s, background .2s, border-color .2s;
+    }
+    .modal-close:hover { color: #fff; background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.25); }
+
+    .modal-title {
+      font-size: .95rem; font-weight: 700; letter-spacing: .04em;
+      color: #fff; margin-bottom: .2rem;
+    }
+    .modal-net { font-size: .68rem; color: var(--text-dim); margin-bottom: 1rem; }
+
+    .qr-frame {
+      width: 208px; height: 208px; margin: 0 auto 1rem;
+      display: grid; place-items: center;
+      border-radius: 14px; padding: 10px;
+      background: #fff;
+      box-shadow: 0 8px 30px rgba(0,0,0,.5),
+                  0 0 0 1px color-mix(in srgb, var(--m-accent, var(--cyan)) 30%, transparent);
+    }
+    .qr-frame img { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+    .qr-frame .qr-loading { font-size: .7rem; color: #666; letter-spacing: .05em; }
+
+    .modal-addr {
+      font-family: var(--mono); font-size: .62rem; line-height: 1.5;
+      color: #b8b8ca; word-break: break-all; user-select: all;
+      background: rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.07);
+      border-radius: 9px; padding: .5rem .6rem; margin-bottom: .85rem;
+    }
+
+    .modal-copy {
+      width: 100%; padding: .65rem 1rem; border-radius: 10px;
+      font-family: var(--font); font-size: .78rem; font-weight: 600;
+      letter-spacing: .05em; color: #fff; cursor: pointer;
+      background: color-mix(in srgb, var(--m-accent, var(--cyan)) 20%, transparent);
+      border: 1px solid color-mix(in srgb, var(--m-accent, var(--cyan)) 50%, transparent);
+      transition: background .25s, box-shadow .25s, transform .15s;
+    }
+    .modal-copy:hover {
+      background: color-mix(in srgb, var(--m-accent, var(--cyan)) 34%, transparent);
+      box-shadow: 0 0 22px color-mix(in srgb, var(--m-accent, var(--cyan)) 30%, transparent);
+    }
+    .modal-copy:active { transform: scale(.97); }
+
+    /* ══ Coin burst overlay ══ */
+    .burst {
+      position: fixed; inset: 0; z-index: 55;
+      pointer-events: none; overflow: hidden;
+    }
+    .burst .coin {
+      position: fixed; top: 0; left: 0;
+      width: var(--sz, 46px); height: var(--sz, 46px);
+      border-radius: 50%;
+      background-size: cover; background-position: center;
+      will-change: transform, opacity;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,.55));
+    }
+
+    /* Full-card click affordance */
+    .card { cursor: pointer; }
+    .card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .scene { padding: 2rem 1rem 1.5rem; }
+      .header { margin-bottom: 2rem; }
+      .cards-grid { grid-template-columns: 1fr; max-width: 380px; gap: 1rem; }
+      .card { height: 262px; }
+    }
+    @media (min-width: 701px) and (max-width: 1020px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); max-width: 680px; }
+      .card { height: 275px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="constellation" aria-hidden="true"></canvas>
+
+  <div class="bg-scene" aria-hidden="true">
+    <div class="aurora"></div>
+    <div class="aurora b"></div>
+    <div class="ribbon r1"></div>
+    <div class="ribbon r2"></div>
+    <div class="ribbon r3"></div>
+    <div class="bg-glow g1"></div>
+    <div class="bg-glow g2"></div>
+    <div class="bg-glow g3"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-noise"></div>
+    <div class="scanline"></div>
+    <div class="bg-vignette"></div>
+  </div>
+
+  <main class="scene">
+    <header class="header">
+      <div class="badge"><span class="dot"></span> Support the Creator</div>
+      <h1 class="title" id="title">MOHAMMADREZA</h1>
+    </header>
+
+    <div class="cards-grid" id="grid"></div>
+  </main>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" hidden>
+    <div class="modal-card" id="modalCard">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Close">&#10005;</button>
+      <div class="modal-title" id="mTitle"></div>
+      <div class="modal-net" id="mNet"></div>
+      <div class="qr-frame" id="mQr"><span class="qr-loading">Generating&hellip;</span></div>
+      <div class="modal-addr" id="mAddr"></div>
+      <button class="modal-copy" id="mCopy" type="button">&#9106; Copy Address</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="flash" id="flash" aria-hidden="true"></div>
+  <div class="burst" id="burst" aria-hidden="true"></div>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isTouch = matchMedia('(pointer: coarse)').matches;
+
+      /* ─────────── Wallet data ─────────── */
+      /* Single source of truth: each address is written ONCE here. */
+      const COINS = [
+        { key: 'btc',    name: 'BTC',   net: 'Bitcoin (Native SegWit)',
+          img: 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png',
+          addr: 'bc1q7z986uxkm6tpy9uuem04wx7p5eed4clvvx7778' },
+        { key: 'eth',    name: 'ETH',   net: 'Ethereum (Mainnet)',
+          img: 'https://assets.coingecko.com/coins/images/279/large/ethereum.png',
+          addr: '0x3a89f0C03F864D1062d6ad882aAe39eFD1CaF580' },
+        { key: 'usdt-e', name: 'USDT',  net: 'ERC-20 (Ethereum)',
+          img: 'https://assets.coingecko.com/coins/images/325/large/Tether.png',
+          addr: '0x3a89f0C03F864D1062d6ad882aAe39eFD1CaF580' },
+        { key: 'bnb',    name: 'BNB',   net: 'BNB Smart Chain (BEP-20)',
+          img: 'https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png',
+          addr: '0x3a89f0C03F864D1062d6ad882aAe39eFD1CaF580' },
+        { key: 'usdt-t', name: 'USDT',  net: 'TRC-20 (TRON)',
+          img: 'https://assets.coingecko.com/coins/images/325/large/Tether.png',
+          addr: 'TBRU8RY3BpCh9DCymSFCi8rRAozStQfExt' },
+        { key: 'trx',    name: 'TRX',   net: 'TRON',
+          img: 'https://assets.coingecko.com/coins/images/1094/large/tron-logo.png',
+          addr: 'TBRU8RY3BpCh9DCymSFCi8rRAozStQfExt' },
+        { key: 'sol',    name: 'SOL',   net: 'Solana',
+          img: 'https://assets.coingecko.com/coins/images/4128/large/solana.png',
+          addr: '56hEupXKzQxUNvA4ziLVvrNiGDJpWwBsPHi2aHFJjL2v' },
+        { key: 'gram',   name: 'TON',   net: 'TON — Telegram Open Network',
+          img: 'https://assets.coingecko.com/coins/images/17980/small/ton_symbol.png',
+          addr: 'UQDtca3U_vzAtzhf4s_tR7P0nYyXGA1ok-69rDuAjShsXeN6' },
+        { key: 'doge',   name: 'DOGE',  net: 'Dogecoin',
+          img: 'https://assets.coingecko.com/coins/images/5/large/dogecoin.png',
+          addr: 'D9pHxFrn4JQjVbWGASaCBj9xsATZ2ov4x2' }
+      ];
+
+      /* ─────────── Build cards ─────────── */
+      const grid = document.getElementById('grid');
+      const gFrag = document.createDocumentFragment();
+
+      COINS.forEach(c => {
+        const wrap = document.createElement('div');
+        wrap.className = 'card-wrap';
+        wrap.innerHTML =
+          '<article class="card" data-coin="' + c.key + '" tabindex="0" role="button">' +
+            '<div class="theme">' +
+              '<div class="theme-bg"></div><div class="theme-glow a"></div>' +
+              '<div class="theme-glow b"></div><div class="theme-icons"></div>' +
+            '</div>' +
+            '<div class="shine"></div>' +
+            '<div class="spot"></div>' +
+            '<div class="card-body">' +
+              '<div class="card-top">' +
+                '<div class="logo-wrap"><div class="logo-ring"></div>' +
+                  '<img class="logo-img" src="' + c.img + '" alt="" width="54" height="54" loading="lazy" />' +
+                '</div>' +
+                '<div class="qr-btn" role="button" tabindex="0" aria-label="Show QR code">' +
+                  '<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">' +
+                    '<path fill="currentColor" d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm10-2h2v2h-2v-2zm4 0h2v2h-2v-2zm-4 4h2v2h-2v-2zm2 2h2v2h-2v-2zm2-2h2v2h-2v-2zm0 4h2v-2h-2v2z"/>' +
+                  '</svg>' +
+                '</div>' +
+              '</div>' +
+              '<div class="meta"><div class="coin-name">' + c.name + '</div>' +
+                '<div class="coin-net">' + c.net + '</div></div>' +
+              '<div class="addr"><div class="addr-label">Address</div>' +
+                '<div class="addr-text"></div></div>' +
+              '<button class="copy-btn" type="button" aria-label="Copy ' + c.name + ' ' + c.net + ' address">' +
+                '<span class="def">&#9106; Copy Address</span>' +
+                '<span class="ok">&#10003; Copied!</span>' +
+              '</button>' +
+            '</div>' +
+          '</article>';
+
+        const card = wrap.firstElementChild;
+        card.dataset.address = c.addr;
+        card.dataset.label = c.name + ' · ' + c.net;
+        card.setAttribute('aria-label', 'Copy ' + c.name + ' ' + c.net + ' address');
+        card.querySelector('.addr-text').textContent = c.addr;
+
+        // graceful fallback if the remote logo fails to load
+        const img = card.querySelector('.logo-img');
+        img.addEventListener('error', () => {
+          const fb = document.createElement('div');
+          fb.className = 'logo-fallback';
+          fb.textContent = c.name.slice(0, 2);
+          img.replaceWith(fb);
+        }, { once: true });
+
+        gFrag.appendChild(wrap);
+      });
+
+      grid.appendChild(gFrag);
+
+      /* ─────────── Title: per-letter cascade ─────────── */
+      const title = document.getElementById('title');
+      const text = (title.textContent || '').trim() || 'MOHAMMADREZA';
+      title.setAttribute('data-text', text);
+      title.textContent = '';
+      [...text].forEach((ch, i) => {
+        const s = document.createElement('span');
+        s.textContent = ch;
+        // flowing gradient always on; entrance + idle float only when motion allowed
+        s.style.animation = reduce
+          ? 'gradFlow 7s ease infinite'
+          : 'gradFlow 7s ease infinite, ' +
+            'letterIn .75s cubic-bezier(.16,1,.3,1) ' + (0.15 + i * 0.05).toFixed(2) + 's both, ' +
+            'letterFloat 3.5s ease-in-out ' + (1.2 + i * 0.09).toFixed(2) + 's infinite';
+        s.style.animationDelay = '';
+        title.appendChild(s);
+      });
+
+      /* ─────────── Constellation canvas ─────────── */
+      const cv = document.getElementById('constellation');
+      const ctx = cv.getContext('2d');
+      let W = 0, H = 0, dpr = 1, nodes = [];
+      const mouse = { x: -9999, y: -9999 };
+      const PALETTE = ['0,240,255', '168,85,247', '245,197,66', '255,77,157'];
+
+      function build() {
+        dpr = Math.min(devicePixelRatio || 1, 2);
+        W = innerWidth; H = innerHeight;
+        cv.width = W * dpr; cv.height = H * dpr;
+        cv.style.width = W + 'px'; cv.style.height = H + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const count = Math.max(28, Math.min(90, Math.round((W * H) / 22000)));
+        nodes = Array.from({ length: count }, () => ({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          vx: (Math.random() - .5) * .28,
+          vy: (Math.random() - .5) * .28,
+          r: 1 + Math.random() * 1.8,
+          c: PALETTE[(Math.random() * PALETTE.length) | 0],
+          tw: Math.random() * Math.PI * 2
+        }));
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+
+        for (const n of nodes) {
+          n.x += n.vx; n.y += n.vy; n.tw += .02;
+          if (n.x < -20) n.x = W + 20; else if (n.x > W + 20) n.x = -20;
+          if (n.y < -20) n.y = H + 20; else if (n.y > H + 20) n.y = -20;
+
+          // gentle repulsion from cursor
+          const dx = n.x - mouse.x, dy = n.y - mouse.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < 16000 && d2 > 1) {
+            const f = (1 - d2 / 16000) * .9;
+            const d = Math.sqrt(d2);
+            n.x += (dx / d) * f; n.y += (dy / d) * f;
+          }
+        }
+
+        // links
+        for (let i = 0; i < nodes.length; i++) {
+          const a = nodes[i];
+          for (let j = i + 1; j < nodes.length; j++) {
+            const b = nodes[j];
+            const dx = a.x - b.x, dy = a.y - b.y;
+            const d2 = dx * dx + dy * dy;
+            if (d2 < 17000) {
+              const o = (1 - d2 / 17000) * .3;
+              ctx.strokeStyle = 'rgba(' + a.c + ',' + o.toFixed(3) + ')';
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // dots
+        for (const n of nodes) {
+          const a = .45 + Math.sin(n.tw) * .3;
+          ctx.fillStyle = 'rgba(' + n.c + ',' + a.toFixed(3) + ')';
+          ctx.shadowColor = 'rgba(' + n.c + ',.8)';
+          ctx.shadowBlur = 8;
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.shadowBlur = 0;
+
+        raf = requestAnimationFrame(draw);
+      }
+
+      let raf = 0, rt = 0;
+      build();
+      if (!reduce) {
+        draw();
+        addEventListener('pointermove', e => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+        addEventListener('pointerleave', () => { mouse.x = mouse.y = -9999; }, { passive: true });
+        addEventListener('resize', () => {
+          clearTimeout(rt);
+          rt = setTimeout(build, 180);
+        }, { passive: true });
+        // pause when the tab is hidden
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) { cancelAnimationFrame(raf); raf = 0; }
+          else if (!raf) draw();
+        });
+      } else {
+        draw();
+        cancelAnimationFrame(raf);
+      }
+
+      /* ─────────── 3D tilt + spotlight ─────────── */
+      const cards = [...document.querySelectorAll('.card')];
+      const state = new WeakMap();
+      cards.forEach(c => state.set(c, { rx: 0, ry: 0, tx: 0, ty: 0, sc: 1, tsc: 1 }));
+
+      if (!isTouch && !reduce) {
+        cards.forEach(card => {
+          card.addEventListener('pointermove', e => {
+            const s = state.get(card);
+            const r = card.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width;
+            const y = (e.clientY - r.top) / r.height;
+            s.tx = (0.5 - y) * 12;
+            s.ty = (x - 0.5) * 12;
+            s.tsc = 1.04;
+            card.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+            card.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+          }, { passive: true });
+
+          card.addEventListener('pointerleave', () => {
+            const s = state.get(card);
+            s.tx = 0; s.ty = 0; s.tsc = 1;
+          }, { passive: true });
+        });
+
+        (function tiltLoop() {
+          for (const card of cards) {
+            const s = state.get(card);
+            s.rx += (s.tx - s.rx) * .12;
+            s.ry += (s.ty - s.ry) * .12;
+            s.sc += (s.tsc - s.sc) * .12;
+            if (Math.abs(s.rx) < .01 && Math.abs(s.ry) < .01 && Math.abs(s.sc - 1) < .001) {
+              card.style.transform = '';
+            } else {
+              card.style.transform =
+                'rotateX(' + s.rx.toFixed(2) + 'deg) rotateY(' + s.ry.toFixed(2) + 'deg) ' +
+                'scale3d(' + s.sc.toFixed(3) + ',' + s.sc.toFixed(3) + ',1)';
+            }
+          }
+          requestAnimationFrame(tiltLoop);
+        })();
+      }
+
+      /* ─────────── Copy + ripple + toast ─────────── */
+      const toast = document.getElementById('toast');
+      let toastTimer = 0;
+
+      function showToast(msg, ok, accent) {
+        toast.textContent = msg;
+        toast.classList.toggle('err', !ok);
+        toast.style.setProperty('--t-accent', accent || 'var(--cyan)');
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+      }
+
+      async function copyText(txt) {
+        if (navigator.clipboard && isSecureContext) {
+          await navigator.clipboard.writeText(txt);
+          return;
+        }
+        const ta = document.createElement('textarea');
+        ta.value = txt;
+        ta.setAttribute('readonly', '');
+        ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, txt.length);
+        const ok = document.execCommand('copy');
+        ta.remove();
+        if (!ok) throw new Error('execCommand copy failed');
+      }
+
+      function ripple(el, ev) {
+        const r = el.getBoundingClientRect();
+        const rip = document.createElement('span');
+        rip.className = 'ripple';
+        const size = Math.max(r.width, r.height) * 2;
+        const cx = (ev && ev.clientX) ? ev.clientX : r.left + r.width / 2;
+        const cy = (ev && ev.clientY) ? ev.clientY : r.top + r.height / 2;
+        rip.style.cssText =
+          'width:' + size + 'px;height:' + size + 'px;left:' + (cx - r.left - size / 2) +
+          'px;top:' + (cy - r.top - size / 2) + 'px';
+        el.appendChild(rip);
+        setTimeout(() => rip.remove(), 620);
+      }
+
+      /* ─────────── Coin burst (rains the copied coin from all over the page) ─────────── */
+      const burstLayer = document.getElementById('burst');
+      const flash = document.getElementById('flash');
+
+      function coinBurst(card, accent) {
+        // colored screen flash in the coin's own color
+        flash.style.setProperty('--f-accent', accent);
+        flash.classList.remove('go');
+        void flash.offsetWidth;
+        flash.classList.add('go');
+
+        if (reduce) return;
+
+        // use the coin's own logo; fall back to its accent color as a filled disc
+        const img = card.querySelector('.logo-img');
+        const src = (img && img.tagName === 'IMG' && img.complete && img.naturalWidth) ? img.src : '';
+
+        const N = window.innerWidth < 700 ? 18 : 30;
+        const originX = window.innerWidth / 2;
+
+        for (let i = 0; i < N; i++) {
+          const coin = document.createElement('span');
+          coin.className = 'coin';
+          const size = 26 + Math.random() * 34;
+          coin.style.setProperty('--sz', size + 'px');
+          if (src) {
+            coin.style.backgroundImage = 'url("' + src + '")';
+            coin.style.boxShadow = '0 0 18px ' + accent;
+          } else {
+            coin.style.background = 'radial-gradient(circle at 35% 30%, #fff 0%, ' + accent + ' 65%)';
+            coin.style.boxShadow = '0 0 20px ' + accent;
+          }
+
+          // spawn spread across the whole width, above the fold
+          const startX = Math.random() * window.innerWidth;
+          const startY = -80 - Math.random() * window.innerHeight * 0.6;
+          // drift toward center-ish while falling, with spin
+          const driftX = (originX - startX) * (0.15 + Math.random() * 0.3) +
+                         (Math.random() - 0.5) * 260;
+          const fallY = window.innerHeight + 160 + Math.random() * 220;
+          const rot = (Math.random() - 0.5) * 1080;
+          const dur = 1200 + Math.random() * 1000;
+          const delay = Math.random() * 300;
+
+          coin.style.transform = 'translate(' + startX + 'px,' + startY + 'px)';
+          burstLayer.appendChild(coin);
+
+          const anim = coin.animate([
+            { transform: 'translate(' + startX + 'px,' + startY + 'px) rotate(0deg) scale(.4)', opacity: 0 },
+            { opacity: 1, offset: 0.12 },
+            { opacity: 1, offset: 0.82 },
+            { transform: 'translate(' + (startX + driftX) + 'px,' + fallY + 'px) rotate(' + rot + 'deg) scale(1)', opacity: 0 }
+          ], {
+            duration: dur,
+            delay: delay,
+            easing: 'cubic-bezier(.3,.05,.5,1)',
+            fill: 'forwards'
+          });
+          anim.onfinish = () => coin.remove();
+        }
+      }
+
+      async function handleCopy(card, ev) {
+        const addr = card.dataset.address;
+        const btn = card.querySelector('.copy-btn');
+        const accent = getComputedStyle(card).getPropertyValue('--accent').trim() || '#00f0ff';
+        if (ev) ripple(btn, ev);
+
+        try {
+          await copyText(addr);
+          btn.classList.add('copied');
+          coinBurst(card, accent);
+          showToast(card.dataset.label + ' address copied', true, accent);
+          clearTimeout(btn._t);
+          btn._t = setTimeout(() => btn.classList.remove('copied'), 2000);
+        } catch (err) {
+          showToast('Copy failed — select the address manually', false);
+          const sel = getSelection();
+          if (sel) {
+            const rg = document.createRange();
+            rg.selectNodeContents(card.querySelector('.addr-text'));
+            sel.removeAllRanges();
+            sel.addRange(rg);
+          }
+        }
+      }
+
+      /* ─────────── QR modal ─────────── */
+      const modal = document.getElementById('modal');
+      const modalCard = document.getElementById('modalCard');
+      const mQr = document.getElementById('mQr');
+      const mCopy = document.getElementById('mCopy');
+      let activeCard = null, lastFocus = null;
+
+      function openQR(card) {
+        activeCard = card;
+        lastFocus = document.activeElement;
+
+        const accent = getComputedStyle(card).getPropertyValue('--accent').trim();
+        modalCard.style.setProperty('--m-accent', accent);
+
+        document.getElementById('mTitle').textContent = card.querySelector('.coin-name').textContent;
+        document.getElementById('mNet').textContent = card.querySelector('.coin-net').textContent;
+        document.getElementById('mAddr').textContent = card.dataset.address;
+
+        mQr.innerHTML = '<span class="qr-loading">Generating&hellip;</span>';
+        const img = new Image();
+        img.alt = 'QR code for the address';
+        img.addEventListener('load', () => { mQr.innerHTML = ''; mQr.appendChild(img); }, { once: true });
+        img.addEventListener('error', () => {
+          mQr.innerHTML = '<span class="qr-loading">QR unavailable offline</span>';
+        }, { once: true });
+        img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=0&data=' +
+                  encodeURIComponent(card.dataset.address);
+
+        modal.hidden = false;
+        requestAnimationFrame(() => modal.classList.add('show'));
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => document.getElementById('modalClose').focus(), 60);
+      }
+
+      function closeQR() {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+        setTimeout(() => { modal.hidden = true; }, 320);
+        if (lastFocus) lastFocus.focus();
+        activeCard = null;
+      }
+
+      document.getElementById('modalClose').addEventListener('click', closeQR);
+      modal.addEventListener('click', e => { if (e.target === modal) closeQR(); });
+      mCopy.addEventListener('click', e => { if (activeCard) handleCopy(activeCard, e); });
+      addEventListener('keydown', e => {
+        if (e.key === 'Escape' && !modal.hidden) closeQR();
+      });
+
+      /* ─────────── Card interactions ─────────── */
+      grid.addEventListener('click', e => {
+        const card = e.target.closest('.card');
+        if (!card) return;
+
+        if (e.target.closest('.qr-btn')) { openQR(card); return; }
+        // clicking the raw address selects it instead of copying
+        if (e.target.closest('.addr-text')) return;
+
+        handleCopy(card, e);
+      });
+
+      grid.addEventListener('keydown', e => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const qr = e.target.closest('.qr-btn');
+        if (qr) { e.preventDefault(); openQR(qr.closest('.card')); return; }
+        const card = e.target.closest('.card');
+        if (card && e.target === card) { e.preventDefault(); handleCopy(card, null); }
+      });
+
+      /* ─────────── Header parallax ─────────── */
+      const header = document.querySelector('.header');
+      let hx = 0, hy = 0, htx = 0, hty = 0;
+      if (!isTouch && !reduce) {
+        document.addEventListener('pointermove', e => {
+          htx = ((e.clientX / innerWidth) - .5) * 10;
+          hty = ((e.clientY / innerHeight) - .5) * 6;
+        }, { passive: true });
+
+        (function hLoop() {
+          hx += (htx - hx) * .06;
+          hy += (hty - hy) * .06;
+          header.style.transform =
+            'rotateY(' + hx.toFixed(2) + 'deg) rotateX(' + (-hy).toFixed(2) + 'deg)';
+          requestAnimationFrame(hLoop);
+        })();
+      }
+    })();
+  </script>
+</body>
+</html>

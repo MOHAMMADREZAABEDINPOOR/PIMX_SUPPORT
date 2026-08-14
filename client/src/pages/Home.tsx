@@ -71,7 +71,6 @@ export default function Home() {
       <div className="paper-noise" aria-hidden="true" />
       <header className="ledger-header">
         <a className="ledger-brand" href="#top" aria-label="MOHAMMADREZA">
-          <span className="brand-block"><img src="/manus-storage/mohammadreza-mark_2d82d3f0.png" alt="" /></span>
           <span className="brand-name">MOHAMMAD<span>REZA</span><i>{t.imprint}</i></span>
         </a>
         <p className="header-code">{t.headerCode}</p>
@@ -88,7 +87,7 @@ export default function Home() {
             <motion.div className="hero-copy-actions" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .45, delay: .2 }}><button className="ink-button" type="button" onClick={goToWallets}>{t.walletsButton} <ChevronLeft size={18} /></button><span className="small-detail">{t.verifiedAddresses}</span></motion.div>
           </div>
           <motion.div className="print-visual" initial={{ opacity: 0, rotate: 2, x: 20 }} animate={{ opacity: 1, rotate: 0, x: 0 }} transition={{ duration: .72, ease: [0.23, 1, 0.32, 1] }}>
-            <img src="/manus-storage/transfer-print-hero_8811d41f.jpg" alt="Abstract poster for direct donations" />
+            <img src="/transfer-print-hero_8811d41f.webp" alt="Abstract poster for direct donations" />
             <div className="blue-stamp"><span>DIRECT DONATION</span><strong>100%</strong><span>TO CREATOR</span></div><div className="scan-stripes" aria-hidden="true" /><p className="visual-caption">{t.visualCaption}</p>
           </motion.div>
           <div className="hero-bottom-line"><span>{t.heroLine}</span><span>→</span></div>

@@ -8,34 +8,34 @@
 
 ---
 
-## Live Website
+## 🌐 Live Website
 
 **Production URL:** [https://pimxsupport.pages.dev/](https://pimxsupport.pages.dev/)
 
 ---
 
-## What is PIMXSUPPORT?
+## 💙 What is PIMXSUPPORT?
 
 PIMXSUPPORT is a modern, **bilingual (EN/FA)** cryptocurrency donation page for directly supporting Mohammad Reza Abedinpoor and the wider PIMX project ecosystem. It presents verified destination addresses as tactile receipt-style objects, making it easy to select an asset, confirm its network, copy the address, or scan a QR code.
 
 The application is intentionally account-free and sends donations directly from the visitor's wallet to the displayed destination address. It does not process payments, hold funds, or act as an intermediary.
 
-### Key Capabilities
+### ✨ Key Capabilities
 
-- **Bilingual Interface** with complete English and Persian content
-- **Native RTL/LTR Support** with instant language switching
-- **Nine Donation Options** across major, stablecoin, and ecosystem assets
-- **Receipt-Inspired Editorial Interface** with print textures and hard graphic details
-- **Fully Responsive Layout** for desktop, tablet, and mobile
-- **One-Click Address Copying** with visible success and failure feedback
-- **QR Code Generation** for scanning destination addresses in wallet apps
-- **Network Verification Prompts** to reduce incorrect-network transfers
+- 🌍 **Bilingual Interface** with complete English and Persian content
+- ↔️ **Native RTL/LTR Support** with instant language switching
+- 💰 **Nine Donation Options** across major, stablecoin, and ecosystem assets
+- 🧾 **Receipt-Inspired Editorial Interface** with print textures and hard graphic details
+- 📱 **Fully Responsive Layout** for desktop, tablet, and mobile
+- 📋 **One-Click Address Copying** with visible success and failure feedback
+- 📷 **QR Code Generation** for scanning destination addresses in wallet apps
+- 🛡️ **Network Verification Prompts** to reduce incorrect-network transfers
 
 ---
 
-## Core Features
+## 🚀 Core Features
 
-### Donation Wallets
+### 💳 Donation Wallets
 
 - Direct wallet addresses with no account or payment processor
 - Bitcoin, Ethereum, BNB, TRON, Solana, TON, Dogecoin, and Tether support
@@ -43,7 +43,7 @@ The application is intentionally account-free and sends donations directly from 
 - Clear asset, network, reference, and destination labels
 - Compact address previews with access to the complete address
 
-### Donation Workflow
+### 🔄 Donation Workflow
 
 - Select the asset and matching blockchain network
 - Copy the destination address with one click
@@ -51,7 +51,7 @@ The application is intentionally account-free and sends donations directly from 
 - Scan a dynamically generated QR code from a mobile wallet
 - Review the network warning before approving the transfer
 
-### Visual Experience
+### 🎨 Visual Experience
 
 - Warm paper-inspired canvas with print texture
 - Transfer-blue accents, black ink, registration marks, and receipt cuts
@@ -60,7 +60,7 @@ The application is intentionally account-free and sends donations directly from 
 - Animated entry, modal, toast, and layout transitions
 - Reduced-motion handling through the browser's accessibility preference
 
-### Multilingual Support
+### 🌍 Multilingual Support
 
 - Complete English and Persian interface copy
 - Automatic document direction updates between `ltr` and `rtl`
@@ -68,7 +68,7 @@ The application is intentionally account-free and sends donations directly from 
 - English display typography using Space Grotesk and IBM Plex Mono
 - Language switch available directly from the page header
 
-### Reliability & Accessibility
+### ♿ Reliability & Accessibility
 
 - React error boundary for graceful failure handling
 - Semantic buttons, headings, sections, and dialog roles
@@ -79,7 +79,7 @@ The application is intentionally account-free and sends donations directly from 
 
 ---
 
-## Supported Assets
+## 🪙 Supported Assets
 
 | No. | Asset | Network | Symbol |
 |-----|-------|---------|--------|
@@ -97,17 +97,17 @@ Always confirm that the selected asset and network in your wallet exactly match 
 
 ---
 
-## Data & Privacy Model
+## 🔐 Data & Privacy Model
 
 PIMXSUPPORT is primarily a static donation interface and does not require a user account, form submission, backend database, or payment processor.
 
-### Used Only During the Current Visit
+### 💻 Used Only During the Current Visit
 
 - Selected interface language (`en` or `fa`)
 - Selected wallet while the QR dialog is open
 - Temporary copy-status notifications
 
-### Not Collected by the Core Application
+### 🚫 Not Collected by the Core Application
 
 - Personal information
 - Passwords or authentication credentials
@@ -120,7 +120,7 @@ QR images are generated from the public destination address through an external 
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 | Technology | Purpose |
 |------------|---------|
@@ -138,14 +138,14 @@ QR images are generated from the public destination address through an external 
 
 ---
 
-## Local Development
+## 💻 Local Development
 
-### Prerequisites
+### 📋 Prerequisites
 
 - Node.js **20.19+** or **22.12+**
 - pnpm **10+**
 
-### Setup Instructions
+### ⚙️ Setup Instructions
 
 1. **Clone the repository:**
 
@@ -188,9 +188,9 @@ QR images are generated from the public destination address through an external 
 
 ---
 
-## Cloudflare Pages Deployment
+## ☁️ Cloudflare Pages Deployment
 
-### Git Integration Settings
+### 🔗 Git Integration Settings
 
 Connect this repository to Cloudflare Pages and use the following build configuration:
 
@@ -204,7 +204,7 @@ Connect this repository to Cloudflare Pages and use the following build configur
 
 The Cloudflare Pages deployment is fully static. The Express bundle generated at `dist/index.js` is intended for conventional Node.js hosting and is not included in the Pages output directory.
 
-### Direct Upload
+### 🚀 Direct Upload
 
 ```bash
 pnpm exec wrangler pages deploy dist/public --project-name=pimxsupport
@@ -212,7 +212,7 @@ pnpm exec wrangler pages deploy dist/public --project-name=pimxsupport
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```text
 PIMX_SUPPORT/
@@ -243,7 +243,7 @@ PIMX_SUPPORT/
 
 ---
 
-## Design Direction
+## 🎨 Design Direction
 
 **Movement:** Experimental editorial print design translated into a direct-donation ledger.
 
@@ -260,7 +260,7 @@ The interface is designed to feel like a verified printed donation register rath
 
 ---
 
-## Validation
+## ✅ Validation
 
 Before deployment, run:
 
@@ -273,7 +273,7 @@ Both commands must finish successfully before publishing a production deployment
 
 ---
 
-## Security Notice
+## 🛡️ Security Notice
 
 - Never share a private key, seed phrase, password, or wallet backup with this website or anyone claiming to represent it.
 - Verify the full destination address and blockchain network before confirming a transaction.
@@ -282,13 +282,13 @@ Both commands must finish successfully before publishing a production deployment
 
 ---
 
-## License
+## 📄 License
 
 This project is released under the [MIT License](LICENSE).
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome. Please:
 
@@ -300,7 +300,7 @@ Contributions are welcome. Please:
 
 ---
 
-## Support & Contact
+## 💙 Support & Contact
 
 For issues, questions, or suggestions, open an issue in this repository. To directly support Mohammad Reza and future PIMX projects, visit [pimxsupport.pages.dev](https://pimxsupport.pages.dev/).
 
@@ -310,24 +310,24 @@ For issues, questions, or suggestions, open an issue in this repository. To dire
 
 # PIMXSUPPORT
 
-## توضیحات فارسی
+## 🇮🇷 توضیحات فارسی
 
 PIMXSUPPORT یک صفحه مدرن و **دوزبانه فارسی و انگلیسی** برای حمایت مستقیم رمزارزی از محمدرضا عابدین‌پور و اکوسیستم پروژه‌های PIMX است. این وب‌سایت آدرس‌های مقصد را به‌شکل رسیدهای گرافیکی مستقل نمایش می‌دهد تا بتوانید دارایی و شبکه را انتخاب کنید، آدرس را کپی کنید یا کد QR را با کیف‌پول خود اسکن کنید.
 
 این برنامه به حساب کاربری نیاز ندارد و کمک مالی را مستقیماً از کیف‌پول فرستنده به آدرس مقصد نمایش‌داده‌شده منتقل می‌کند. PIMXSUPPORT پردازشگر پرداخت، صرافی یا نگهدارنده دارایی نیست.
 
-### ویژگی‌های اصلی
+### ✨ ویژگی‌های اصلی
 
-- **رابط کامل دوزبانه** به زبان فارسی و انگلیسی
-- **پشتیبانی واقعی از RTL و LTR** با تغییر سریع زبان
-- **۹ گزینه حمایت مالی** در شبکه‌ها و دارایی‌های مختلف
-- **رابط ادیتوریال شبیه رسید چاپی** با جزئیات گرافیکی سخت
-- **طراحی کاملاً واکنش‌پذیر** برای دسکتاپ، تبلت و موبایل
-- **کپی آدرس با یک کلیک** همراه با پیام موفقیت یا خطا
-- **تولید کد QR** برای اسکن آدرس مقصد در اپلیکیشن کیف‌پول
-- **هشدار تطبیق شبکه** برای کاهش احتمال انتقال روی شبکه اشتباه
+- 🌍 **رابط کامل دوزبانه** به زبان فارسی و انگلیسی
+- ↔️ **پشتیبانی واقعی از RTL و LTR** با تغییر سریع زبان
+- 💰 **۹ گزینه حمایت مالی** در شبکه‌ها و دارایی‌های مختلف
+- 🧾 **رابط ادیتوریال شبیه رسید چاپی** با جزئیات گرافیکی سخت
+- 📱 **طراحی کاملاً واکنش‌پذیر** برای دسکتاپ، تبلت و موبایل
+- 📋 **کپی آدرس با یک کلیک** همراه با پیام موفقیت یا خطا
+- 📷 **تولید کد QR** برای اسکن آدرس مقصد در اپلیکیشن کیف‌پول
+- 🛡️ **هشدار تطبیق شبکه** برای کاهش احتمال انتقال روی شبکه اشتباه
 
-### کیف‌پول‌های حمایت
+### 💳 کیف‌پول‌های حمایت
 
 - آدرس‌های مستقیم بدون حساب کاربری یا واسطه پرداخت
 - پشتیبانی از Bitcoin، Ethereum، BNB، TRON، Solana، TON، Dogecoin و Tether
@@ -335,7 +335,7 @@ PIMXSUPPORT یک صفحه مدرن و **دوزبانه فارسی و انگلی�
 - نمایش واضح نام دارایی، شبکه، شناسه و آدرس مقصد
 - نمایش خلاصه آدرس همراه با دسترسی به آدرس کامل
 
-### روند حمایت مالی
+### 🔄 روند حمایت مالی
 
 - دارایی و شبکه بلاکچین متناظر را انتخاب کنید
 - آدرس مقصد را با یک کلیک کپی کنید
@@ -343,7 +343,7 @@ PIMXSUPPORT یک صفحه مدرن و **دوزبانه فارسی و انگلی�
 - کد QR را با اپلیکیشن کیف‌پول موبایل اسکن کنید
 - پیش از تأیید انتقال، هشدار شبکه را بررسی کنید
 
-### تجربه بصری
+### 🎨 تجربه بصری
 
 - پس‌زمینه کاغذی گرم با بافت چاپی
 - رنگ آبی انتقال، جوهر مشکی و جزئیات شبیه رسید
@@ -352,7 +352,7 @@ PIMXSUPPORT یک صفحه مدرن و **دوزبانه فارسی و انگلی�
 - انیمیشن ورود، مودال، اعلان و تغییر چیدمان
 - احترام به تنظیم کاهش حرکت مرورگر
 
-### پشتیبانی چندزبانه
+### 🌍 پشتیبانی چندزبانه
 
 - متن کامل رابط به فارسی و انگلیسی
 - تغییر خودکار جهت سند بین `rtl` و `ltr`
@@ -360,7 +360,7 @@ PIMXSUPPORT یک صفحه مدرن و **دوزبانه فارسی و انگلی�
 - استفاده از Space Grotesk و IBM Plex Mono برای تایپوگرافی انگلیسی
 - کنترل تغییر زبان در هدر صفحه
 
-### پایداری و دسترس‌پذیری
+### ♿ پایداری و دسترس‌پذیری
 
 - Error Boundary برای مدیریت خطاهای رابط
 - ساختار معنایی برای دکمه‌ها، عنوان‌ها، بخش‌ها و دیالوگ
@@ -371,7 +371,7 @@ PIMXSUPPORT یک صفحه مدرن و **دوزبانه فارسی و انگلی�
 
 ---
 
-## دارایی‌های پشتیبانی‌شده
+## 🪙 دارایی‌های پشتیبانی‌شده
 
 | شماره | دارایی | شبکه | نماد |
 |-------|--------|------|------|
@@ -389,17 +389,17 @@ PIMXSUPPORT یک صفحه مدرن و **دوزبانه فارسی و انگلی�
 
 ---
 
-## مدل داده و حریم خصوصی
+## 🔐 مدل داده و حریم خصوصی
 
 PIMXSUPPORT یک رابط استاتیک حمایت مالی است و برای استفاده از آن به حساب کاربری، ارسال فرم، دیتابیس سمت سرور یا پردازشگر پرداخت نیازی نیست.
 
-### اطلاعات موقت در زمان بازدید
+### 💻 اطلاعات موقت در زمان بازدید
 
 - زبان انتخاب‌شده رابط (`fa` یا `en`)
 - کیف‌پول انتخاب‌شده هنگام بازبودن پنجره QR
 - پیام موقت وضعیت کپی آدرس
 
-### اطلاعاتی که برنامه اصلی جمع‌آوری نمی‌کند
+### 🚫 اطلاعاتی که برنامه اصلی جمع‌آوری نمی‌کند
 
 - اطلاعات شخصی
 - رمز عبور یا اطلاعات ورود
@@ -412,7 +412,7 @@ PIMXSUPPORT یک رابط استاتیک حمایت مالی است و برای 
 
 ---
 
-## پشته تکنولوژی
+## 🛠️ پشته تکنولوژی
 
 | تکنولوژی | کاربرد |
 |----------|--------|
@@ -430,14 +430,14 @@ PIMXSUPPORT یک رابط استاتیک حمایت مالی است و برای 
 
 ---
 
-## راه‌اندازی محلی
+## 💻 راه‌اندازی محلی
 
-### پیش‌نیازها
+### 📋 پیش‌نیازها
 
 - Node.js نسخه **20.19+** یا **22.12+**
 - pnpm نسخه **10+**
 
-### مراحل اجرا
+### ⚙️ مراحل اجرا
 
 1. **دریافت پروژه:**
 
@@ -480,7 +480,7 @@ PIMXSUPPORT یک رابط استاتیک حمایت مالی است و برای 
 
 ---
 
-## انتشار روی Cloudflare Pages
+## ☁️ انتشار روی Cloudflare Pages
 
 تنظیمات اتصال GitHub به Cloudflare Pages:
 
@@ -502,7 +502,7 @@ pnpm exec wrangler pages deploy dist/public --project-name=pimxsupport
 
 ---
 
-## نکات امنیتی
+## 🛡️ نکات امنیتی
 
 - هرگز کلید خصوصی، عبارت بازیابی، رمز عبور یا نسخه پشتیبان کیف‌پول را در این سایت یا در اختیار فرد دیگری قرار ندهید.
 - پیش از تأیید تراکنش، آدرس کامل مقصد و شبکه بلاکچین را بررسی کنید.
@@ -511,13 +511,13 @@ pnpm exec wrangler pages deploy dist/public --project-name=pimxsupport
 
 ---
 
-## مجوز
+## 📄 مجوز
 
 این پروژه تحت [مجوز MIT](LICENSE) منتشر شده است.
 
 ---
 
-## مشارکت
+## 🤝 مشارکت
 
 برای مشارکت در پروژه:
 
@@ -529,7 +529,7 @@ pnpm exec wrangler pages deploy dist/public --project-name=pimxsupport
 
 ---
 
-## پشتیبانی و ارتباط
+## 💙 پشتیبانی و ارتباط
 
 برای گزارش مشکل یا پیشنهاد، یک Issue در همین ریپو ثبت کنید. برای حمایت مستقیم از محمدرضا و پروژه‌های آینده PIMX به [pimxsupport.pages.dev](https://pimxsupport.pages.dev/) مراجعه کنید.
 

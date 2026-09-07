@@ -12,7 +12,7 @@
 [![React](https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-v3-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Read in Persian](https://img.shields.io/badge/مطالعه_به_فارسی-Persian_README-008080?style=for-the-badge)](#-بخش-فوقالعاده-مفصل-و-جامع-به-زبان-فارسی-persian-documentation)
+[![Read in Persian](https://img.shields.io/badge/مطالعه_به_فارسی-Persian_README-008080?style=for-the-badge)](#persian-documentation)
 
 <p align="center">
   <b>PIMX_SUPPORT</b> is a customer service gateway, live ticketing portal, and documentation knowledge base engineered for the PIMX technology ecosystem. Features searchable technical documentation, step-by-step VPN connection tutorials, priority-tagged ticket dispatching, and native bilingual localization in Persian and English.
@@ -21,7 +21,7 @@
 [Project Overview](#-project-overview) •
 [Directory Anatomy](#-exhaustive-directory--file-anatomy) •
 [Quick Start](#-quick-start) •
-[توضیحات فارسی](#-بخش-فوقالعاده-مفصل-و-جامع-به-زبان-فارسی-persian-documentation) •
+[توضیحات فارسی](#persian-documentation) •
 [License](#-copyleft-license--legal-attribution)
 
 </div>
@@ -81,7 +81,8 @@ npm run dev
 
 ---
 
-## 🇮🇷 بخش فوق‌العاده مفصل و جامع به زبان فارسی (Persian Documentation)
+## Persian Documentation
+### 🇮🇷 مستندات فوق‌العاده مفصل، جامع و فنی به زبان فارسی
 
 ### ۱. معرفی پرتال پشتیبانی مشتریان PIMX_SUPPORT
 سامانه **PIMX_SUPPORT** درگاه رسمی پشتیبانی، سیستم تیکتینگ و پایگاه دانش تخصصی برای تمامی سرویس‌ها و ابزارهای اکوسیستم PIMX است. این وب‌سایت با طراحی مدرن به زبان فارسی و انگلیسی به کاربران کمک می‌کند تا در کمترین زمان راه‌حل مشکلات اتصال پروکسی را پیدا کنند و در صورت نیاز با تیم فنی مکاتبه نمایند.
@@ -102,6 +103,6 @@ Distributed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
 ---
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,12,24,30&height=120&section=footer" alt="Footer" width="100%" />
+<img src="./assets/footer.svg" alt="PIMX_SUPPORT 3D Footer" width="100%" />
 <sub>Architected by <a href="https://github.com/MOHAMMADREZAABEDINPOOR"><b>MOHAMMADREZA ABEDINPOOR</b></a>. Leave a ⭐ to support user experience excellence!</sub>
 </div>

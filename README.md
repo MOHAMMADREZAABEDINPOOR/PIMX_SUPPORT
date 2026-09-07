@@ -1,88 +1,107 @@
 <div align="center">
 
-# 🎫 PIMX_SUPPORT 💬📚
-### Modern Real-Time Customer Support, Ticket Orchestration & Knowledge Gateway
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,12,24,30&height=220&section=header&text=PIMX_SUPPORT&fontSize=42&fontAlignY=35&desc=%E2%9A%A1%20Modern%20Customer%20Support%2C%20Ticketing%20%26%20FAQ%20Portal&descFontSize=16&descAlignY=62" alt="PIMX_SUPPORT Banner" width="100%" />
 
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg?style=for-the-badge)](https://www.gnu.org/licenses/agpl-3.0)
+<a href="https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_SUPPORT">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=2800&pause=1000&color=00D2FF&center=true&vCenter=true&width=780&lines=Modern+Real-Time+Customer+Support%2C+Ticketing+%26+Knowledge+Base;Interactive+Searchable+Documentation+Gateway+for+All+PIMX+Tools;Priority-Based+Issue+Dispatching+(Low%2C+Medium%2C+High%2C+Critical);React+18+%2B+TypeScript+%2B+Tailwind+CSS+Glassmorphic+Interface;Full-Stack+Synergy+with+Lightweight+Express.js+Backend+API;Bilingual+Persian+(RTL)+%26+English+Layouts+with+Instant+Toggle" alt="Typing SVG" />
+</a>
+
+<br/>
+
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg?style=for-the-badge&logo=gnu)](https://www.gnu.org/licenses/agpl-3.0)
 [![React](https://img.shields.io/badge/React-18+-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-v3-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Read in Persian](https://img.shields.io/badge/مطالعه_به_فارسی-Persian_README-008080?style=for-the-badge)](#-توضیحات-کامل-فارسی-persian-documentation)
+[![Read in Persian](https://img.shields.io/badge/مطالعه_به_فارسی-Persian_README-008080?style=for-the-badge)](#-بخش-فوقالعاده-مفصل-و-جامع-به-زبان-فارسی-persian-documentation)
 
 <p align="center">
-  A unified enterprise customer support, documentation portal, and ticketing platform engineered for the PIMX technology ecosystem. Features a bilingual searchable knowledge base, live interactive ticket creation, automated issue routing, and instant FAQ lookups.
+  <b>PIMX_SUPPORT</b> is a customer service gateway, live ticketing portal, and documentation knowledge base engineered for the PIMX technology ecosystem. Features searchable technical documentation, step-by-step VPN connection tutorials, priority-tagged ticket dispatching, and native bilingual localization in Persian and English.
 </p>
 
-[Key Modules](#-key-modules) •
+[Project Overview](#-project-overview) •
+[Directory Anatomy](#-exhaustive-directory--file-anatomy) •
 [Quick Start](#-quick-start) •
-[توضیحات فارسی](#-توضیحات-کامل-فارسی-persian-documentation) •
-[License](#-license)
+[توضیحات فارسی](#-بخش-فوقالعاده-مفصل-و-جامع-به-زبان-فارسی-persian-documentation) •
+[License](#-copyleft-license--legal-attribution)
 
 </div>
 
 ---
 
-## ⚡ Key Modules
+## ⚡ Project Overview
 
-- 🎫 **Smart Ticketing Gateway**:
-  - Structured ticket dispatching with priority tagging (Low, Medium, High, Critical).
-  - Encrypted file and screenshot attachments for bug diagnostic reporting.
-- 📖 **Searchable Knowledge Base & Documentation**:
-  - Instant fuzzy-search engine indexing technical troubleshooting articles, connection tutorials, and API docs.
-- 💬 **Bilingual Live Support UI (EN / FA)**:
-  - Complete Persian RTL typography and English LTR layouts with automatic locale detection.
-- 🛡️ **Spam & Abuse Protection**:
-  - Client-side rate limiting and CAPTCHA validation to protect agents from automated ticket flooding.
+Users of advanced network proxy tools and cryptographic software frequently need clear documentation and rapid technical support when connections drop.
+
+**PIMX_SUPPORT** provides:
+- 📖 **Instant Search Knowledge Base**: Pre-loaded with answers to common connection errors, protocol guides, and client setups (v2rayNG, Clash, Streisand).
+- 🎫 **Structured Ticketing**: Dispatches technical issue reports with system logs and diagnostic screenshots.
+- 🇮🇷 **Native Persian RTL Support**: Tailored for Iranian users with clean Persian typography and intuitive layout.
+
+---
+
+## 📂 Exhaustive Directory & File Anatomy
+
+```
+d:/code/PIMXSUPPORT/
+│
+├── package.json                     # Monorepo dependencies and scripts
+├── components.json                  # Shadcn UI configuration descriptors
+├── README.md                        # Master comprehensive bilingual documentation
+│
+├── client/                          # React + TypeScript Frontend
+│   ├── index.html                   # HTML5 viewport container
+│   ├── src/
+│   │   ├── App.tsx                  # Root navigation orchestrator
+│   │   ├── main.tsx                 # React DOM mount lifecycle
+│   │   ├── index.css                # Tailwind utility styles & glassmorphism tokens
+│   │   ├── pages/
+│   │   │   ├── Home.tsx             # Knowledge base landing page and category cards
+│   │   │   └── NotFound.tsx         # 404 error page with search redirect
+│   │   └── components/ui/           # Accessible UI component library
+│   │       ├── accordion.tsx        # Collapsible FAQ accordion items
+│   │       ├── alert-dialog.tsx     # Confirmation dialogs
+│   │       ├── badge.tsx            # Priority badges (Critical, High, Medium, Low)
+│   │       └── avatar.tsx           # Support agent profile avatar
+│
+└── server/                          # Backend API
+    └── index.ts                     # Express server managing tickets and knowledge base
+```
 
 ---
 
 ## 🚀 Quick Start
 
-### 1. Installation
 ```bash
 git clone https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_SUPPORT.git
 cd PIMX_SUPPORT
 
 npm install
-```
-
-### 2. Local Development Server
-```bash
 npm run dev
 ```
-Open `http://localhost:5173` to test the customer portal.
-
-### 3. Production Build
-```bash
-npm run build
-npm run preview
-```
 
 ---
 
-## 🇮🇷 توضیحات کامل فارسی (Persian Documentation)
+## 🇮🇷 بخش فوق‌العاده مفصل و جامع به زبان فارسی (Persian Documentation)
 
-### معرفی سامانه پشتیبانی و مستندات PIMX_SUPPORT
-سامانه **PIMX_SUPPORT** درگاه یکپارچه خدمات پشتیبانی مشتریان، تیکتینگ و پایگاه دانش تخصصی برای تمامی سرویس‌های اکوسیستم PIMX است. این پرتال با طراحی مدرن و دو زبانه به کاربران کمک می‌کند تا به سرعت پاسخ سوالات متداول خود را بیابند، آموزش‌های اتصال به سرورها را مطالعه کنند و در صورت نیاز با کارشناسان فنی از طریق سیستم تیکتینگ در ارتباط باشند.
-
-### امکانات برجسته:
-1. **سیستم تیکتینگ چندسطحی:**
-   * ثبت، اولویت‌بندی و پیگیری آسان تیکت‌ها به همراه قابلیت ارسال تصویر و لاگ خطا.
-2. **پایگاه دانش جستجوپذیر:**
-   * دسترسی فوری به مقالات راهنما و پاسخ سوالات متداول با موتور جستجوی سریع.
-3. **پشتیبانی کامل از زبان فارسی و راست‌چین (RTL):**
-   * رابط کاربری زیبا با تایپوگرافی هماهنگ فارسی برای راحتی کاربران داخل کشور.
-4. **طراحی واکنش‌گرا و سریع:**
-   * اجرا بدون تأخیر در تمامی دستگاه‌ها اعم از موبایل، تبلت و دسکتاپ.
+### ۱. معرفی پرتال پشتیبانی مشتریان PIMX_SUPPORT
+سامانه **PIMX_SUPPORT** درگاه رسمی پشتیبانی، سیستم تیکتینگ و پایگاه دانش تخصصی برای تمامی سرویس‌ها و ابزارهای اکوسیستم PIMX است. این وب‌سایت با طراحی مدرن به زبان فارسی و انگلیسی به کاربران کمک می‌کند تا در کمترین زمان راه‌حل مشکلات اتصال پروکسی را پیدا کنند و در صورت نیاز با تیم فنی مکاتبه نمایند.
 
 ---
 
-## 📜 License
+### ۲. تشریح فایل‌های پروژه
+- **`client/src/pages/Home.tsx`**: صفحه اصلی شامل دسته‌بندی آموزش‌های راه‌اندازی در ویندوز، اندروید و آیفون به همراه بخش سوالات متداول (FAQ).
+- **`client/src/components/ui/`**: کامپوننت‌های مدرن آکاردئونی، کارت‌های راهنما و فرم ثبت تیکت.
+- **`server/index.ts`**: بک‌اند مدیریت تیکت‌ها و ارجاع درخواست‌های پشتیبانی.
+
+---
+
+## 📜 Copyleft License & Legal Attribution
 
 Distributed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
 
 ---
 
 <div align="center">
-  <sub>Engineered by <a href="https://github.com/MOHAMMADREZAABEDINPOOR">MOHAMMADREZA ABEDINPOOR</a>. Leave a ⭐ to support user experience excellence!</sub>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,12,24,30&height=120&section=footer" alt="Footer" width="100%" />
+<sub>Architected by <a href="https://github.com/MOHAMMADREZAABEDINPOOR"><b>MOHAMMADREZA ABEDINPOOR</b></a>. Leave a ⭐ to support user experience excellence!</sub>
 </div>

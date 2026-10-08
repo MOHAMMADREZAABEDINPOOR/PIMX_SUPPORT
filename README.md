@@ -8,6 +8,14 @@
 
 # 💛 PIMX SUPPORT
 
+<!-- pimx-live-site:start -->
+## Deployment URL
+
+**[PIMX_SUPPORT deployment address](https://pimxsupport.pages.dev/)**
+
+This deployment returned HTTP 404 and was unavailable when checked on 2026-10-08.
+<!-- pimx-live-site:end -->
+
 A bilingual donation page for PIMX with cryptocurrency network cards, wallet addresses and receipt-style detail dialogs.
 
 [GitHub](https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_SUPPORT) · [PIMX / Profile](https://github.com/MOHAMMADREZAABEDINPOOR) · [Static artwork](assets/readme/hero.png)

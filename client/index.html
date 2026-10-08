@@ -1,18 +1,57 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="fa" dir="rtl">
   <head>
+    <script>
+      try {
+        var preference = localStorage.getItem("pimxsupport-theme");
+        var theme =
+          preference === "dark" || preference === "light"
+            ? preference
+            : window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      } catch {
+        document.documentElement.dataset.theme = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches
+          ? "dark"
+          : "light";
+      }
+    </script>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <meta name="theme-color" content="#f3efe3" />
-    <meta name="description" content="PIMXSUPPORT — a bilingual direct cryptocurrency donation page for supporting PIMX projects." />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <meta name="theme-color" content="#f7f8f2" />
+    <meta
+      name="description"
+      content="PIMXSUPPORT — a bilingual direct cryptocurrency donation page for supporting PIMX projects."
+    />
     <title>PIMXSUPPORT — Direct Donations</title>
     <link rel="icon" href="data:," />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      rel="preload"
+      href="/fonts/vazirmatn.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      if (window.location.protocol === "file:") {
+        document.getElementById("root").innerHTML =
+          '<main style="max-width:640px;margin:64px auto;padding:24px;font-family:Arial,sans-serif;line-height:1.8">' +
+          '<h1>PIMXSUPPORT</h1><p dir="rtl" lang="fa">برای اجرای سایت، فایل run.cmd را در پوشهٔ پروژه باز کنید، سپس وارد آدرس زیر شوید.</p>' +
+          "<p>Run run.cmd in the project folder, then open:</p>" +
+          '<a href="http://localhost:3000/">http://localhost:3000/</a></main>';
+      }
+    </script>
+    <noscript>Enable JavaScript to view PIMXSUPPORT.</noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

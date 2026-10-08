@@ -1,168 +1,131 @@
 <div align="center">
 
-<img src="assets/readme/hero.gif" width="1200" alt="PIMX SUPPORT: a sculpted heart surrounded by donation coins" />
+<img src="assets/readme/hero.gif" width="1200" height="540" alt="PIMX Support: an original animated sculpted heart, donation coins, thank-you card and growing sprout" />
 
-**[English](README.md) · [فارسی](README.fa.md)**
+**[🌐 English](README.md) · [🇮🇷 فارسی](README.fa.md)**
+
+![React](https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=101016) ![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178c6?logo=typescript&logoColor=white) ![Three.js](https://img.shields.io/badge/Three.js-3D-202330?logo=threedotjs) ![Vite](https://img.shields.io/badge/Vite-7-9c7cff?logo=vite&logoColor=white)
 
 </div>
 
 # 💛 PIMX SUPPORT
 
-<!-- pimx-live-site:start -->
-## Deployment URL
+**A little heart. More room to build.**
 
-**[PIMX_SUPPORT deployment address](https://pimxsupport.pages.dev/)**
+A personal, bilingual support page for the PIMX ecosystem. A sculpted interactive heart introduces the story; searchable wallet cards help visitors find the asset and network, copy a destination address or scan its QR code, then send from their own wallet.
 
-This deployment returned HTTP 404 and was unavailable when checked on 2026-10-08.
-<!-- pimx-live-site:end -->
+[GitHub](https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_SUPPORT) · [PIMX / Profile](https://github.com/MOHAMMADREZAABEDINPOOR) · [PNG](assets/readme/hero.png)
 
-A bilingual donation page for PIMX with cryptocurrency network cards, wallet addresses and receipt-style detail dialogs.
+## ✨ What makes it personal
 
-[GitHub](https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_SUPPORT) · [PIMX / Profile](https://github.com/MOHAMMADREZAABEDINPOOR) · [Static artwork](assets/readme/hero.png)
-
-| At a glance | Details |
+| Experience | Included behavior |
 |:---|:---|
-| 💛 Experience | Web application / browser experience |
-| 🧰 Built with | `React` · `Vite` · `TypeScript` · `Express` |
-| 🌐 Documentation | [English](README.md) · [فارسی](README.fa.md) |
+| 💛 Three-dimensional identity | Lazy-loaded Three.js heart sculpture with pointer interaction |
+| 🪙 Nine wallet cards | Bitcoin, Ethereum, BNB, TRON, Solana, TON, Dogecoin and Tether on two networks |
+| 🔎 Find a destination | Asset/network search, category filters and a clear empty state |
+| 📋 Copy and scan | Full address, copy feedback, locally generated QR and an enlarged QR dialog |
+| 🌐 Two languages | Persian RTL and English LTR with saved language selection |
+| 🌗 Make it comfortable | Light/dark themes, responsive layouts, reduced-motion support and pause control |
+| 📖 The human story | Personal introduction, the reason for support and expandable FAQ |
+| 🎨 Original README artwork | An animated heart garden with coins, a thank-you card and a growing sprout |
 
-[✨ Features](#features) · [🚀 Getting started](#getting-started) · [⚙️ Configuration](#configuration) · [🌍 Deployment](#deployment)
+## 🧭 How visitors use it
 
----
+1. Browse or search the asset and network cards.
+2. Select the exact network to see the full destination address.
+3. Copy the address or open the QR dialog.
+4. Check the destination in your own wallet and send there.
 
-<a id="features"></a>
+The page displays donation destinations. It does not connect wallets, collect private keys, create payment requests, confirm transactions or operate a support-ticket system.
 
-## ✨ Features
+## 🚀 Run locally
 
-| Area | Included capability |
-|:---|:---|
-| 📡 Network | Wallet/network cards and copyable addresses |
-| ⚡ Workflow | Receipt-style wallet detail dialogs |
-| 🌐 Experience | English/Persian content and responsive layout |
-| 🔌 Integration | React frontend and optional Express static server |
-
-<a id="stack"></a>
-
-## 🧰 Stack
-
-| Tool | Version / source |
-|---|---|
-| React | `^19.2.1` |
-| Vite | `^7.1.7` |
-| TypeScript | `5.6.3` |
-| Express | `^4.21.2` |
-| Framer Motion | `^12.23.22` |
-| Tailwind CSS | `^4.1.14` |
-
-<a id="getting-started"></a>
-
-## 🚀 Getting started
-
-Node.js 22.12+ and the package manager declared in package.json. Install dependencies from the checked-in lockfile where available.
+Use **Node.js 22.12+** and **pnpm 10.4.1**, as declared in `package.json`.
 
 ```bash
 git clone https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_SUPPORT.git
 cd PIMX_SUPPORT
-
-pnpm install --frozen-lockfile
-pnpm run dev
+npx --yes pnpm@10.4.1 install --frozen-lockfile
+npm run dev
 ```
 
-<a id="configuration"></a>
+Open the URL printed by Vite, normally `http://localhost:5173`. On Windows, `run.cmd` installs dependencies when needed, builds the application and starts the bundled server on port 3000.
 
-## ⚙️ Configuration
-
-These names are found in the example configuration or source; not all are required. Check their defaults/usage in those files and supply secrets only in your local or hosting environment.
-
-| Name | Role |
-|---|---|
-| `BUILT_IN_FORGE_API_KEY` | Credential/connection setting; keep private |
-| `BUILT_IN_FORGE_API_URL` | Application setting; inspect its definition |
-| `PORT` | Application setting; inspect its definition |
-
-<a id="usage"></a>
-
-## 🎯 Usage
-
-Select a wallet card, verify the displayed address and network, and use the copy control. Maintainers can edit the wallets array in client/src/pages/Home.tsx.
-
-<a id="project-structure"></a>
-
-## 🗂️ Project structure
-
-| Path | Role |
-|---|---|
-| [`assets/`](assets/) | Brand/media/README assets |
-| [`client/`](client/) | Browser application |
-| [`server/`](server/) | Server implementation |
-| [`components.json`](components.json) | Project entry/configuration file |
-| [`package.json`](package.json) | Project entry/configuration file |
-| [`template.json`](template.json) | Project entry/configuration file |
-| [`tsconfig.json`](tsconfig.json) | Project entry/configuration file |
-| [`tsconfig.node.json`](tsconfig.node.json) | Project entry/configuration file |
-
-<a id="commands-and-checks"></a>
-
-## 🧪 Commands and checks
+## 🧰 Stack and commands
 
 | Command | Purpose |
 |:---|:---|
-| `pnpm run dev` | 🧑‍💻 Development server |
-| `pnpm run build` | 📦 Production build |
-| `pnpm run start` | ▶️ Application server |
-| `pnpm run preview` | 👀 Preview a build |
-| `pnpm run check` | 🔎 Source checks |
+| `npm run dev` | Vite development server |
+| `npm run check` | TypeScript type checks |
+| `npm run build` | Build `dist/public` and the Node server in `dist/index.js` |
+| `npm run preview` | Preview the built browser application |
+| `npm start` | Serve the production build using Express |
+| `npm run format` | Format source using Prettier |
 
-```bash
-pnpm run dev
-pnpm run build
-pnpm run start
-pnpm run preview
-pnpm run check
+React 19, TypeScript 5.6, Vite 7, Tailwind 4, Framer Motion, Three.js, Radix Dialog, Lucide and QRCode power the interface. Express serves the optional Node deployment. The committed pnpm patch for Wouter is part of the install.
+
+## ⚙️ Customize the page
+
+| File | Edit here |
+|:---|:---|
+| [wallets.ts](client/src/lib/wallets.ts) | Wallet addresses, networks, categories and asset metadata |
+| [Home.tsx](client/src/pages/Home.tsx) | English/Persian copy, story, FAQ and support flow |
+| [SupportSculpture.tsx](client/src/components/SupportSculpture.tsx) | Interactive native 3D sculpture |
+| [locale.ts](client/src/lib/locale.ts) | Language persistence and document direction |
+| [ThemeContext.tsx](client/src/contexts/ThemeContext.tsx) | Theme selection |
+| [index.css](client/src/index.css) | Layout, fonts and visual identity |
+
+No AI provider key is required for this page. `PORT` configures the optional Express server, defaulting to 3000. The initial interface language is Persian; the README defaults to English.
+
+## 🗺️ Architecture
+
+```mermaid
+flowchart LR
+    V[Visitor] --> R[React interface]
+    R --> L[Local wallet catalogue]
+    R --> Q[Local QR generation]
+    R --> S[Three.js heart sculpture]
+    R --> C[Clipboard]
+    V --> W[Own wallet app]
+    W --> N[Chosen blockchain network]
 ```
 
-These commands are declared in package.json; the list is not a test execution report. Test commands may need a browser, service or prepared database.
+## 🌍 Deploy
 
-<a id="deployment"></a>
+### Cloudflare Pages / static hosting
 
-## 🌍 Deployment
+Use build command `npm run build` and **output directory `dist/public`**. The Express bundle is separate and is not needed by a static host. Configure Node 22.12+ and ensure pnpm installs from the checked-in lockfile; add SPA routing fallback if your host requires it.
 
-Deploy the build according to its architecture: server-backed projects need a Node process; static Vite frontends can host dist. Pages functions, KV or D1 require separate configuration.
+### Node hosting
 
-<a id="limitations"></a>
+```bash
+npm run build
+npm start
+```
 
-## 📌 Limitations
+The existing public address `https://pimxsupport.pages.dev/` returned **404** during the publication check. Uploading this source to GitHub does not by itself establish a working Pages deployment.
 
-The page displays donation destinations; it does not process payments or confirm transactions. Verify wallet ownership and network before use. This snapshot does not implement a support-ticket backend.
+## 🧪 Verify your changes
 
-<a id="troubleshooting"></a>
+Run `npm run check` and `npm run build`. In a browser, check English/Persian switching, RTL layout, both themes, asset search, filters, address copy, QR enlargement, FAQ controls and the motion pause button. Use reduced-motion mode to review the fallback. These are verification steps, not a claim that every browser is certified.
 
 ## 🛠️ Troubleshooting
 
-- Missing packages: install dependencies using the project’s package manager.
-- API/network failure: check the configured origin, provider and hosting bindings.
-- Old assets: rebuild when a build script exists, then clear the browser cache.
+| Symptom | Check |
+|:---|:---|
+| Static deployment is blank or 404 | Use `dist/public`, publish a successful build and check host routing |
+| Copy is unavailable | Use HTTPS or localhost; manually select the full address if clipboard permission is denied |
+| Node server has no page | Run the build first; the server serves `dist/public` |
+| Dependency installation fails | Use the declared pnpm version and retain the Wouter patch |
 
-<a id="contributing"></a>
+## 🤝 Contribute
 
-## 🤝 Contributing
-
-Create a focused branch, verify the affected behavior and explain the change clearly. Keep private data, build outputs and local databases out of commits.
-
-<a id="license"></a>
+Keep changes focused, preserve both languages and check mobile layouts. Wallet changes must be reviewed against their intended owner and network before a deployment.
 
 ## 📄 License
 
-No repository-level license file is included in this snapshot. Public visibility alone does not grant reuse rights; contact the repository owner for terms.
+`package.json` declares MIT. This snapshot contains no separate repository-level LICENSE file.
 
 ---
 
-Part of **PIMX** · Documentation in English and Persian.
-
----
-
-<div align="center">
-
-💛 **PIMX SUPPORT** · [English](README.md) · [فارسی](README.fa.md)
-
-</div>
+Built with heart by **Mohammadreza Abedinpoor** · Part of **PIMX**.

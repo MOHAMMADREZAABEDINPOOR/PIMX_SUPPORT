@@ -10,6 +10,14 @@
 
 # 💛 PIMX SUPPORT
 
+<!-- pimx-live-site:start -->
+## لینک دیپلوی
+
+**[آدرس دیپلوی PIMX_SUPPORT](https://pimxsupport.pages.dev/)**
+
+این آدرس در بررسی 2026-10-08 پاسخ HTTP 404 داد و در دسترس نیست.
+<!-- pimx-live-site:end -->
+
 صفحه دوزبانه حمایت مالی از PIMX با کارت شبکه‌های رمزارزی، آدرس کیف پول و نمایش جزئیات به شکل رسید.
 
 [GitHub](https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_SUPPORT) · [PIMX / Profile](https://github.com/MOHAMMADREZAABEDINPOOR) · [بنر ثابت](assets/readme/hero.png)
